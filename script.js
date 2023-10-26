@@ -23,11 +23,22 @@ function Accelerator (config) {
 }
 
 Accelerator.prototype.drawRelease = function () {
-    ctxA.rect(this.x, this.y, this.width,  this.height);
+    ctxA.fillStyle = this.ironColor;
+    ctxA.fillRect(this.x, this.y, this.width,  this.height);
+
+    ctxA.fillStyle = this.gripColor;
+    for (let i = 0; i < 6; i ++){
+        ctxA.beginPath();
+        let x = 20;
+        let step = 55;
+        ctxA.moveTo(x,   50 + step * i);
+        ctxA.lineTo(x + 110, 50 + step * i);
+        ctxA.lineTo(x + 110, 50 + step * i + 4);
+        ctxA.lineTo(x, 50 + step * i + 4);
+        ctxA.fill();
+    }
 }
 
 /*APPEL DES FONCTIONS*/
-let accelerator = {
-
-}
+let accelerator = new Accelerator({});
 accelerator.drawRelease();
