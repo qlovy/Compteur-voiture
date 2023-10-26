@@ -2,6 +2,8 @@
 
 //Le canvas de l'accélérateur
 const canvasAccelerator = document.querySelector("#accélérateur");
+const widthA = canvasAccelerator.width = 150;
+const heightA = canvasAccelerator.height = 400;
 const ctxA = canvasAccelerator.getContext('2d');
 
 //Le canvas du cadran de vitesse
