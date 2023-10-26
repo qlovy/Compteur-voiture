@@ -5,7 +5,7 @@ const canvasAccelerator = document.querySelector("#accélérateur");
 const ctxA = canvasAccelerator.getContext('2d');
 
 //Le canvas du cadran de vitesse
-const canvasSpeedCounter = document.getElementById("cadranVitesse");
+const canvasSpeedCounter = document.querySelector("#cadranVitesse");
 const ctxS = canvasSpeedCounter.getContext('2d');
 
 /*FONCTIONS DE L'ACCÉLÉRATEUR*/
