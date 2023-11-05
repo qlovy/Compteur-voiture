@@ -37,10 +37,12 @@ Accelerator.prototype.drawRelease = function () {
     
 
     //La surface d'appui de la pédale d'accélérateur
-    //Le rectangel sans trait avec remplissage
+    
+    //Le rectangle sans trait avec remplissage
     ctxA.fillStyle = this.ironColor;
+    
     ctxA.fillRect(this.x, this.y + (400 - this.height), this.width,  this.height);
-    //Le rectanlge en trait sans remplissage
+    //Le rectangle en trait sans remplissage
     ctxA.strokeStyle = 'rgb(0, 0, 0)';
     ctxA.lineWidth = 3;
     ctxA.strokeRect(this.x + 1, this.y + (400 - this.height), this.width - 2,  this.height - 1);
