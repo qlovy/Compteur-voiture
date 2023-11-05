@@ -25,13 +25,27 @@ function Accelerator (config) {
 
 Accelerator.prototype.drawRelease = function () {
     //La tige de la pédale d'accélérateur
+
+    //Le rectangle en trait sans remplissage
+    ctxA.strokeStyle = 'rgb(0, 0, 0)';
+    ctxA.lineWidth = 5;
+    ctxA.strokeRect(this.x + this.width/3, this.y, this.width/3, 400 - this.height);
+
+    //Le rectangle avec remplissage sans trait
     ctxA.fillStyle = this.upperIronColor;
     ctxA.fillRect(this.x + this.width/3, this.y, this.width/3, 400 - this.height);
+    
 
     //La surface d'appui de la pédale d'accélérateur
+    //Le rectangel sans trait avec remplissage
     ctxA.fillStyle = this.ironColor;
     ctxA.fillRect(this.x, this.y + (400 - this.height), this.width,  this.height);
+    //Le rectanlge en trait sans remplissage
+    ctxA.strokeStyle = 'rgb(0, 0, 0)';
+    ctxA.lineWidth = 3;
+    ctxA.strokeRect(this.x + 1, this.y + (400 - this.height), this.width - 2,  this.height - 1);
 
+    //La surface d'adérance de la pédale.
     ctxA.fillStyle = this.gripColor;
     for (let i = 0; i < 7; i ++){
         ctxA.beginPath();
