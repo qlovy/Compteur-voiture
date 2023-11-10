@@ -109,6 +109,7 @@ Accelerator.prototype.drawPressed = function () {
 
 /*APPEL DES FONCTIONS*/
 let accelerator = new Accelerator({});
+//dessin de la pédale en mode repos
 accelerator.drawRelease();
 canvasAccelerator.addEventListener('mousedown', (e) => {
         accelerator.drawPressed();
