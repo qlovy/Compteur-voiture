@@ -9,6 +9,9 @@ const ctxA = canvasAccelerator.getContext('2d');
 //Le canvas du cadran de vitesse
 const canvasSpeedCounter = document.querySelector("#cadranVitesse");
 const ctxS = canvasSpeedCounter.getContext('2d');
+const widhtS = canvasSpeedCounter.width = 600;
+const heightS = canvasSpeedCounter.height = 400;
+
 
 /*FONCTIONS DE L'ACCÉLÉRATEUR*/
 
@@ -21,6 +24,7 @@ function Accelerator (config) {
     this.upperIronColor = config.color || 'rgb(127, 140, 141)';
     this.ironColor = config.color || 'rgb(149, 165, 166)';
     this.gripColor = config.color || 'rgb(44, 62, 80)';
+    this.strokeColor = config.color || 'rgb(0, 0, 0)';
 }
 
 Accelerator.prototype.drawRelease = function () {
@@ -31,9 +35,9 @@ Accelerator.prototype.drawRelease = function () {
     //La tige de la pédale d'accélérateur
 
     //Le rectangle en trait sans remplissage
-    ctxA.strokeStyle = 'rgb(0, 0, 0)';
-    ctxA.lineWidth = 5;
-    ctxA.strokeRect(this.x + this.width/3, this.y, this.width/3, 400 - this.height);
+    ctxA.strokeStyle = this.strokeColor;
+    ctxA.lineWidth = 2.5;
+    ctxA.strokeRect(this.x + 2.5 + this.width/3, this.y, this.width/3, 400 - this.height);
 
     //Le rectangle avec remplissage sans trait
     ctxA.fillStyle = this.upperIronColor;
@@ -128,6 +132,14 @@ Accelerator.prototype.drawPressed = function () {
         ctxA.fill();
     }
 }
+
+function SpeedCounter (config) {
+	this.x = config.x || 0;
+	this.y = config.y || 0;
+	this.backgroundColor = config.color || 'rgb(0, 0, 0)';
+	this.graduationColor = condig.color || 'rgb(255, 255, 255)';
+};
+
 
 /*APPEL DES FONCTIONS*/
 let accelerator = new Accelerator({});
