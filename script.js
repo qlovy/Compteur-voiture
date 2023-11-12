@@ -39,7 +39,6 @@ Accelerator.prototype.drawRelease = function () {
     ctxA.fillStyle = this.upperIronColor;
     ctxA.fillRect(this.x + this.width/3, this.y, this.width/3, 400 - this.height);
 
-
     //La surface d'appui de la pédale d'accélérateur
 
     //Le rectangle sans trait avec remplissage
@@ -72,26 +71,49 @@ Accelerator.prototype.drawPressed = function () {
 
     //La tige de la pédale d'accélérateur
 
-    //Le rectangle en trait sans remplissage
-    ctxA.strokeStyle = 'rgb(0, 0, 0)';
-    ctxA.lineWidth = 5;
-    ctxA.strokeRect(this.x + this.width/3, this.y, this.width/3, 380 - this.height);
-
     //Le rectangle avec remplissage sans trait
     ctxA.fillStyle = this.upperIronColor;
-    ctxA.fillRect(this.x + this.width/3, this.y, this.width/3, 380 - this.height);
+    ctxA.beginPath();
+    ctxA.moveTo(51, 0);
+    ctxA.lineTo(99, 0);
+    ctxA.lineTo(101, 45);
+    ctxA.lineTo(49, 45);
+    ctxA.lineTo(51, 0);
+    ctxA.fill();
 
+    //Le rectangle en trait sans remplissage
+    ctxA.strokeStyle = 'rgb(0, 0, 0)';
+    ctxA.lineWidth = 2.5;
+    ctxA.beginPath();
+    ctxA.moveTo(99, 0);
+    ctxA.lineTo(101, 45);
+    ctxA.lineTo(49, 45);
+    ctxA.lineTo(51, 0);
+    ctxA.stroke();
 
     //La surface d'appui de la pédale d'accélérateur
 
     //Le rectangle sans trait avec remplissage
     ctxA.fillStyle = this.ironColor;
+    ctxA.lineWidth = 3;
+    ctxA.moveTo(101, 45);
+    ctxA.lineTo(145, 45);
+    ctxA.lineTo(147, 370);
+    ctxA.lineTo(3, 370);
+    ctxA.lineTo(5, 45);
+    ctxA.lineTo(101, 45);
+    ctxA.fill();
 
-    ctxA.fillRect(this.x, this.y + (360 - this.height), this.width,  this.height);
     //Le rectangle en trait sans remplissage
     ctxA.strokeStyle = 'rgb(0, 0, 0)';
     ctxA.lineWidth = 3;
-    ctxA.strokeRect(this.x + 1, this.y + (360 - this.height), this.width - 2,  this.height - 1);
+    ctxA.moveTo(101, 45);
+    ctxA.lineTo(145, 45);
+    ctxA.lineTo(147, 370);
+    ctxA.lineTo(3, 370);
+    ctxA.lineTo(5, 45);
+    ctxA.lineTo(101, 45);
+    ctxA.stroke();
 
     //La surface d'adérance de la pédale.
     ctxA.fillStyle = this.gripColor;
@@ -99,10 +121,10 @@ Accelerator.prototype.drawPressed = function () {
         ctxA.beginPath();
         let x = 20;
         let step = 42;
-        ctxA.moveTo(x,   (360 - this.height) + 43 + step * i);
-        ctxA.lineTo(x + 110, (360 - this.height) + 43 + step * i);
-        ctxA.lineTo(x + 110, (360 - this.height) + 43 + step * i + 4);
-        ctxA.lineTo(x, (360 - this.height) + 43 + step * i + 4);
+        ctxA.moveTo(x, 83 + step * i);
+        ctxA.lineTo(x + 110, 83 + step * i);
+        ctxA.lineTo(x + 110, 83 + step * i + 4);
+        ctxA.lineTo(x, 83 + step * i + 4);
         ctxA.fill();
     }
 }
