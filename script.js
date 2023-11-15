@@ -34,25 +34,25 @@ Accelerator.prototype.drawRelease = function () {
 
     //La tige de la pédale d'accélérateur
 
-    //Le rectangle en trait sans remplissage
-    ctxA.strokeStyle = this.strokeColor;
-    ctxA.lineWidth = 2.5;
-    ctxA.strokeRect(this.x + 2.5 + this.width/3, this.y, this.width/3, 400 - this.height);
-
     //Le rectangle avec remplissage sans trait
     ctxA.fillStyle = this.upperIronColor;
     ctxA.fillRect(this.x + this.width/3, this.y, this.width/3, 400 - this.height);
+
+    //Le rectangle en trait sans remplissage
+    ctxA.strokeStyle = this.strokeColor;
+    ctxA.lineWidth = 2.5;
+    ctxA.strokeRect(this.x + this.width/3, this.y, this.width/3, 400 - this.height);
 
     //La surface d'appui de la pédale d'accélérateur
 
     //Le rectangle sans trait avec remplissage
     ctxA.fillStyle = this.ironColor;
-
     ctxA.fillRect(this.x, this.y + (400 - this.height), this.width,  this.height);
+    
     //Le rectangle en trait sans remplissage
     ctxA.strokeStyle = 'rgb(0, 0, 0)';
     ctxA.lineWidth = 3;
-    ctxA.strokeRect(this.x + 1, this.y + (400 - this.height), this.width - 2,  this.height - 1);
+    ctxA.strokeRect(this.x + 2.5, this.y + (400 - this.height), this.width - 4,  this.height - 1);
 
     //La surface d'adérance de la pédale.
     ctxA.fillStyle = this.gripColor;
@@ -78,11 +78,11 @@ Accelerator.prototype.drawPressed = function () {
     //Le rectangle avec remplissage sans trait
     ctxA.fillStyle = this.upperIronColor;
     ctxA.beginPath();
-    ctxA.moveTo(51, 0);
-    ctxA.lineTo(99, 0);
-    ctxA.lineTo(101, 45);
-    ctxA.lineTo(49, 45);
-    ctxA.lineTo(51, 0);
+    ctxA.moveTo(48, 0);
+    ctxA.lineTo(98, 0);
+    ctxA.lineTo(100, 45);
+    ctxA.lineTo(48, 45);
+    ctxA.lineTo(50, 0);
     ctxA.fill();
 
     //Le rectangle en trait sans remplissage
@@ -90,9 +90,9 @@ Accelerator.prototype.drawPressed = function () {
     ctxA.lineWidth = 2.5;
     ctxA.beginPath();
     ctxA.moveTo(99, 0);
-    ctxA.lineTo(101, 45);
-    ctxA.lineTo(49, 45);
-    ctxA.lineTo(51, 0);
+    ctxA.lineTo(100, 45);
+    ctxA.lineTo(50, 45);
+    ctxA.lineTo(52, 0);
     ctxA.stroke();
 
     //La surface d'appui de la pédale d'accélérateur
