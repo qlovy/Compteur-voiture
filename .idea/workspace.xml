@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="3cda611e-b060-479e-9a2a-8e7837fc4784" name="Changes" comment="design de la pédale des gaz fini">
+    <list default="true" id="b9e441d4-36eb-4008-af0b-e4c7c355c063" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/CompteurVoiture.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -12,174 +14,36 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="HTML File" />
-        <option value="CSS File" />
-        <option value="JavaScript File" />
-      </list>
-    </option>
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2XGkCLTbrHxK8bTnSynVfOtLpqh" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="2YDtwct3IPM8FVAWYwG1jyhOo2I" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/qlo/Documents/_sandbox/CompteurVoiture&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/qlo/Documents/_sandbox/ascenceur",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\qlo\Documents\_sandbox\CompteurVoiture" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\qlo\Documents\_sandbox\CompteurVoiture" />
-    </key>
-  </component>
-  <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="CompteurVoiture" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="CompteurVoiture" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-  </component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="3cda611e-b060-479e-9a2a-8e7837fc4784" name="Changes" comment="" />
-      <created>1698262675284</created>
+      <changelist id="b9e441d4-36eb-4008-af0b-e4c7c355c063" name="Changes" comment="" />
+      <created>1700072219366</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1698262675284</updated>
-      <workItem from="1698262676314" duration="390000" />
-      <workItem from="1698270499489" duration="787000" />
-      <workItem from="1698319496551" duration="5476000" />
-      <workItem from="1698333634005" duration="90000" />
-      <workItem from="1698348216318" duration="3070000" />
-      <workItem from="1698393278226" duration="3369000" />
-      <workItem from="1699648718945" duration="2000" />
-      <workItem from="1699656073003" duration="2512000" />
-      <workItem from="1699658691835" duration="29000" />
-      <workItem from="1699658724532" duration="142000" />
-      <workItem from="1700070948187" duration="6000" />
-      <workItem from="1700070962822" duration="100000" />
+      <updated>1700072219366</updated>
+      <workItem from="1700072220650" duration="45000" />
     </task>
-    <task id="LOCAL-00001" summary="Initialisation">
-      <created>1698321259602</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1698321259602</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Initialisation">
-      <created>1698321615001</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1698321615001</updated>
-    </task>
-    <task id="LOCAL-00003" summary="mise en place de la pédale et du cadran de vitesse.">
-      <created>1698323345589</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1698323345589</updated>
-    </task>
-    <task id="LOCAL-00004" summary="mise en place de la pédale et du cadran de vitesse.">
-      <created>1698324729140</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1698324729140</updated>
-    </task>
-    <task id="LOCAL-00005" summary="mise en place de la pédale et du cadran de vitesse.">
-      <created>1698324756300</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1698324756300</updated>
-    </task>
-    <task id="LOCAL-00006" summary="le canvas est null mais je ne sais pas pourquoi.">
-      <created>1698325003746</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1698325003746</updated>
-    </task>
-    <task id="LOCAL-00007" summary="design de la pédale des gaz">
-      <created>1698353898777</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1698353898777</updated>
-    </task>
-    <task id="LOCAL-00008" summary="design de la pédale des gaz fini">
-      <created>1698397360861</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1698397360861</updated>
-    </task>
-    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="CUSTOM_BOOLEAN_PROPERTIES">
-                <map>
-                  <entry key="Show.Git.Branches" value="true" />
-                </map>
-              </option>
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Initialisation" />
-    <MESSAGE value="mise en place de la pédale et du cadran de vitesse." />
-    <MESSAGE value="le canvas est null mais je ne sais pas pourquoi." />
-    <MESSAGE value="design de la pédale des gaz" />
-    <MESSAGE value="design de la pédale des gaz fini" />
-    <option name="LAST_COMMIT_MESSAGE" value="design de la pédale des gaz fini" />
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
   </component>
 </project>
