@@ -9,7 +9,7 @@ const ctxA = canvasAccelerator.getContext('2d');
 //Le canvas du cadran de vitesse
 const canvasSpeedCounter = document.querySelector("#cadranVitesse");
 const ctxS = canvasSpeedCounter.getContext('2d');
-const widhtS = canvasSpeedCounter.width = 600;
+const widthS = canvasSpeedCounter.width = 600;
 const heightS = canvasSpeedCounter.height = 400;
 
 
@@ -133,16 +133,29 @@ Accelerator.prototype.drawPressed = function () {
     }
 }
 
+//fonction qui convetit les degrés en radiant pour la fonction arc()
+const degTorad = function (degrees) {
+    return degrees * Math.PI / 180;
+}
+
 function SpeedCounter (config) {
 	this.x = config.x || 0;
 	this.y = config.y || 0;
+    this.radius = config.radius || 200;
 	this.backgroundColor = config.color || 'rgb(0, 0, 0)';
-	this.graduationColor = condig.color || 'rgb(255, 255, 255)';
+	this.graduationColor = config.color || 'rgb(255, 255, 255)';
 };
 
+SpeedCounter.prototype.draw = function() {
+    ctxS.fillStyle = this.backgroundColor;
+    ctxS.arc(this.x + widthS/2, this.y + heightS/2, this.radius, degTorad(180), degTorad(360));
+    ctxS.fill();
+}
 
 /*APPEL DES FONCTIONS*/
 let accelerator = new Accelerator({});
+let speedCoutner = new SpeedCounter({});
+
 //dessin de la pédale en mode repos
 accelerator.drawRelease();
 canvasAccelerator.addEventListener('mousedown', (e) => {
@@ -152,3 +165,5 @@ canvasAccelerator.addEventListener('mousedown', (e) => {
 canvasAccelerator.addEventListener('mouseup', (e) => {
         accelerator.drawRelease();
 });
+
+speedCoutner.draw();
