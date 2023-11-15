@@ -1,7 +1,2 @@
-.idea/**/Compteur-voiture.iml
-.idea/**/misc.xml
-.idea/**/modules.xml
-.idea/**/vcs.xml
-.idea/**/workspace.xml
-
+#ignore le dossier .idea
 .idea
