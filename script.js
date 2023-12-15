@@ -133,10 +133,27 @@ Accelerator.prototype.drawPressed = function () {
     }
 }
 
-//fonction qui convetit les degrés en radiant pour la fonction arc()
-const degTorad = function (degrees) {
+// convertit les degrés en radiant pour la fonction arc()
+function degToRad (degrees) {
     return degrees * Math.PI / 180;
 }
+
+// calcule la distance en diagonale dans un secteur
+function  distanceDiagonal(radius, angle){
+    return Math.sin(angle/2) * radius; // Calcul le dernier côté du triangle isocèle
+}
+
+// calcule la distance en X en fonction de la diagonale
+function distanceInX(diagonal){
+    return Math.sin(45) * diagonal;
+}
+
+// calcule la distance en Y en fonction de la diagonale
+function distanceInY(diagonal){
+    return Math.cos(45) * diagonal;
+}
+
+// PS: Condencé les deux fonctions de distance
 
 function SpeedCounter (config) {
 	this.x = config.x || 0;
@@ -144,12 +161,26 @@ function SpeedCounter (config) {
     this.radius = config.radius || 200;
 	this.backgroundColor = config.color || 'rgb(0, 0, 0)';
 	this.graduationColor = config.color || 'rgb(255, 255, 255)';
+    this.nbGraduation = config.nbGraduation || 9;
 };
 
 SpeedCounter.prototype.draw = function() {
+    // Fond du cadran
     ctxS.fillStyle = this.backgroundColor;
-    ctxS.arc(this.x + widthS/2, this.y + heightS/2, this.radius, degTorad(180), degTorad(360));
+    ctxS.beginPath();
+    ctxS.arc(this.x + widthS/2, this.y + heightS/2, this.radius, degToRad(180), degToRad(360));
     ctxS.fill();
+    
+    // Premier point de la graduation
+    let diagonal = distanceDiagonal(this.radius, 180/9);
+    console.log(diagonal);
+    for (let i=0 ; i<2 ; i++){
+        ctxS.fillStyle = this.graduationColor;
+        ctxS.beginPath();
+        ctxS.arc(this.x + widthS/2 - 170 + distanceInX(diagonal), this.y + heightS/2 - 20 - distanceInY(diagonal), 5, degToRad(0), degToRad(360)); // placer les ronds tous les 20 degrés
+        ctxS.fill();
+    }
+
 }
 
 /*APPEL DES FONCTIONS*/
@@ -158,6 +189,8 @@ let speedCoutner = new SpeedCounter({});
 
 //dessin de la pédale en mode repos
 accelerator.drawRelease();
+
+// gestion animation de la pédale d'accélérateur
 canvasAccelerator.addEventListener('mousedown', (e) => {
         accelerator.drawPressed();
 });
