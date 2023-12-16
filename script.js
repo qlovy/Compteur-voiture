@@ -13,9 +13,8 @@ const widthS = canvasSpeedCounter.width = 600;
 const heightS = canvasSpeedCounter.height = 400;
 
 
-/*FONCTIONS DE L'ACCÉLÉRATEUR*/
+/*OBJECT ACCELERATOR*/
 
-//objet accélérateur
 function Accelerator (config) {
     this.x = config.x || 0;
     this.y = config.y || 0;
@@ -133,27 +132,9 @@ Accelerator.prototype.drawPressed = function () {
     }
 }
 
-// convertit les degrés en radiant pour la fonction arc()
-function degToRad (degrees) {
-    return degrees * Math.PI / 180;
-}
-
-// calcule la distance en diagonale dans un secteur
-function  distanceDiagonal(radius, angle){
-    return Math.sin(angle/2) * radius; // Calcul le dernier côté du triangle isocèle
-}
-
-// calcule la distance en X en fonction de la diagonale
-function distanceInX(diagonal){
-    return Math.sin(45) * diagonal;
-}
-
-// calcule la distance en Y en fonction de la diagonale
-function distanceInY(diagonal){
-    return Math.cos(45) * diagonal;
-}
-
-// PS: Condencé les deux fonctions de distance
+/*
+OBJET SPEEDCOUNTER
+*/
 
 function SpeedCounter (config) {
 	this.x = config.x || 0;
@@ -182,6 +163,29 @@ SpeedCounter.prototype.draw = function() {
     }
 
 }
+
+/*FONCTIONS GENERALES*/
+
+// convertit les degrés en radiant pour la fonction arc()
+function degToRad (degrees) {
+    return degrees * Math.PI / 180;
+}
+
+// calcule la distance en diagonale dans un secteur
+function  distanceDiagonal(radius, angle){
+    return Math.sin(angle/2) * radius; // Calcul le dernier côté du triangle isocèle
+}
+
+// calcule la distance en X en fonction de la diagonale
+function distanceInX(diagonal){
+    return Math.sin(45) * diagonal;
+}
+
+// calcule la distance en Y en fonction de la diagonale
+function distanceInY(diagonal){
+    return Math.cos(45) * diagonal;
+}
+// PS: Condencé les deux fonctions de distance
 
 /*APPEL DES FONCTIONS*/
 let accelerator = new Accelerator({});
