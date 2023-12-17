@@ -142,7 +142,8 @@ function SpeedCounter (config) {
     this.radius = config.radius || 200;
 	this.backgroundColor = config.color || 'rgb(0, 0, 0)';
 	this.graduationColor = config.color || 'rgb(255, 255, 255)';
-    this.nbGraduation = config.nbGraduation || 9;
+    this.nbGraduation = config.nbGraduation || 6;
+    this.angleGraduation = config.angleGraduation || 180/this.nbGraduation;
 };
 
 SpeedCounter.prototype.draw = function() {
@@ -153,12 +154,11 @@ SpeedCounter.prototype.draw = function() {
     ctxS.fill();
     
     // Premier point de la graduation
-    let diagonal = distanceDiagonal(this.radius, 180/9);
-    console.log(diagonal);
-    for (let i=0 ; i<2 ; i++){
-        ctxS.fillStyle = this.graduationColor;
+    for (let i=0 ; i<7 ; i++){
+        let diagonal = distanceDiagonal(this.radius - 30, this.angleGraduation * i);
+        ctxS.fillStyle = 'rgb(255, 0, 0)';
         ctxS.beginPath();
-        ctxS.arc(this.x + widthS/2 - 170 + distanceInX(diagonal), this.y + heightS/2 - 20 - distanceInY(diagonal), 5, degToRad(0), degToRad(360)); // placer les ronds tous les 20 degrés
+        ctxS.arc(this.x + widthS/2 - this.radius + distanceIn("x", this.angleGraduation, diagonal), this.y + heightS/2 - distanceIn("y", this.angleGraduation, diagonal), 5, degToRad(0), degToRad(360)); // placer les ronds tous les 20 degrés
         ctxS.fill();
     }
 
@@ -172,19 +172,21 @@ function degToRad (degrees) {
 }
 
 // calcule la distance en diagonale dans un secteur
-function  distanceDiagonal(radius, angle){
-    return Math.sin(angle/2) * radius; // Calcul le dernier côté du triangle isocèle
+function  distanceDiagonal(radius, degrees){
+    return Math.sin(degToRad(degrees/2)) * radius * 2; // Calcul le dernier côté du triangle isocèle, côté AB, triangle ABO isocèle
 }
 
 // calcule la distance en X en fonction de la diagonale
-function distanceInX(diagonal){
-    return Math.sin(45) * diagonal;
+function distanceIn(c, degrees, diagonal){
+    let radian = degToRad((180 - degrees)/2);
+    if (c === "x"){
+        // A commenter + plus schéma ?
+        return Math.cos(radian) * diagonal;
+    }else{
+        return Math.sin(radian) * diagonal;
+    }
 }
 
-// calcule la distance en Y en fonction de la diagonale
-function distanceInY(diagonal){
-    return Math.cos(45) * diagonal;
-}
 // PS: Condencé les deux fonctions de distance
 
 /*APPEL DES FONCTIONS*/
