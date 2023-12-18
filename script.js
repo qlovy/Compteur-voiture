@@ -142,7 +142,7 @@ function SpeedCounter (config) {
     this.radius = config.radius || 200;
 	this.backgroundColor = config.color || 'rgb(0, 0, 0)';
 	this.graduationColor = config.color || 'rgb(255, 255, 255)';
-    this.nbGraduation = config.nbGraduation || 6;
+    this.nbGraduation = config.nbGraduation || 20;
     this.angleGraduation = config.angleGraduation || 180/this.nbGraduation;
 };
 
@@ -154,11 +154,10 @@ SpeedCounter.prototype.draw = function() {
     ctxS.fill();
     
     // Premier point de la graduation
-    for (let i=0 ; i<7 ; i++){
-        let diagonal = distanceDiagonal(this.radius - 30, this.angleGraduation * i);
+    for (let i=0 ; i<3 ; i++){
         ctxS.fillStyle = 'rgb(255, 0, 0)';
         ctxS.beginPath();
-        ctxS.arc(this.x + widthS/2 - this.radius + distanceIn("x", this.angleGraduation, diagonal), this.y + heightS/2 - distanceIn("y", this.angleGraduation, diagonal), 5, degToRad(0), degToRad(360)); // placer les ronds tous les 20 degrés
+        ctxS.arc(this.x + widthS/2 - this.radius + distanceInFromDiagonal("x", this.radius - 30, this.angleGraduation * (i + 1)), this.y + heightS/2 - distanceInFromDiagonal("y", this.radius - 30, this.angleGraduation * (i + 1)), 5, degToRad(0), degToRad(360));
         ctxS.fill();
     }
 
@@ -171,19 +170,15 @@ function degToRad (degrees) {
     return degrees * Math.PI / 180;
 }
 
-// calcule la distance en diagonale dans un secteur
-function  distanceDiagonal(radius, degrees){
-    return Math.sin(degToRad(degrees/2)) * radius * 2; // Calcul le dernier côté du triangle isocèle, côté AB, triangle ABO isocèle
-}
-
 // calcule la distance en X en fonction de la diagonale
-function distanceIn(c, degrees, diagonal){
-    let radian = degToRad((180 - degrees)/2);
+function distanceInFromDiagonal(c, radius, degrees){
+    let alpha = degToRad(degrees);
+    let gamma = degToRad(180 - degrees/2);
     if (c === "x"){
         // A commenter + plus schéma ?
-        return Math.cos(radian) * diagonal;
+        return Math.abs(2 * radius * Math.cos(gamma) * Math.sin(alpha/2));
     }else{
-        return Math.sin(radian) * diagonal;
+        return 4 * radius * Math.sin(alpha/2);
     }
 }
 
