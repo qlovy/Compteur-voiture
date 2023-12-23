@@ -144,11 +144,13 @@ function SpeedCounter(config) {
     this.graduationColor = config.color || 'rgb(255, 255, 255)';
     this.nbGraduation = config.nbGraduation || 9;
     this.angleGraduation = config.angleGraduation || 180 / this.nbGraduation;
+    this.pointerColor = config.pointerColor || 'rgb(255, 0, 0)';
 };
 
 SpeedCounter.prototype.draw = function () {
     // Fond du cadran
     ctxS.fillStyle = this.backgroundColor;
+    ctxS.fillRect(this.x+ widthS/2 - this.radius, this.y + heightS/2, this.radius*2, 30);
     ctxS.beginPath();
     ctxS.arc(this.x + widthS / 2, this.y + heightS / 2, this.radius, degToRad(180), degToRad(360));
     ctxS.fill();
@@ -163,6 +165,23 @@ SpeedCounter.prototype.draw = function () {
             ctxS.fill();
         }
     }
+
+    // Dessin de l'aiguille
+    //La forme de l'aiguille
+    // Le cercle de base
+    ctxS.fillStyle = this.pointerColor;
+    ctxS.beginPath();
+    ctxS.arc(this.x + widthS/2, this.y + heightS/2, 20, degToRad(0), degToRad(360));
+    ctxS.fill();
+    // La pointe
+    ctxS.fillStyle = this.pointerColor;
+    ctxS.beginPath();
+    ctxS.moveTo(0, 0);
+    //L'axe de rotation de l'aiguille
+    ctxS.fillStyle = 'rgb(255, 255, 255)';
+    ctxS.beginPath();
+    ctxS.arc(this.x + widthS/2, this.y + heightS/2, 6, degToRad(0), degToRad(360));
+    ctxS.fill();
 
 }
 
