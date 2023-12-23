@@ -15,7 +15,7 @@ const heightS = canvasSpeedCounter.height = 400;
 
 /*OBJECT ACCELERATOR*/
 
-function Accelerator (config) {
+function Accelerator(config) {
     this.x = config.x || 0;
     this.y = config.y || 0;
     this.width = config.width || 150;
@@ -35,31 +35,31 @@ Accelerator.prototype.drawRelease = function () {
 
     //Le rectangle avec remplissage sans trait
     ctxA.fillStyle = this.upperIronColor;
-    ctxA.fillRect(this.x + this.width/3, this.y, this.width/3, 400 - this.height);
+    ctxA.fillRect(this.x + this.width / 3, this.y, this.width / 3, 400 - this.height);
 
     //Le rectangle en trait sans remplissage
     ctxA.strokeStyle = this.strokeColor;
     ctxA.lineWidth = 2.5;
-    ctxA.strokeRect(this.x + this.width/3, this.y, this.width/3, 400 - this.height);
+    ctxA.strokeRect(this.x + this.width / 3, this.y, this.width / 3, 400 - this.height);
 
     //La surface d'appui de la pédale d'accélérateur
 
     //Le rectangle sans trait avec remplissage
     ctxA.fillStyle = this.ironColor;
-    ctxA.fillRect(this.x, this.y + (400 - this.height), this.width,  this.height);
-    
+    ctxA.fillRect(this.x, this.y + (400 - this.height), this.width, this.height);
+
     //Le rectangle en trait sans remplissage
     ctxA.strokeStyle = 'rgb(0, 0, 0)';
     ctxA.lineWidth = 3;
-    ctxA.strokeRect(this.x + 2.5, this.y + (400 - this.height), this.width - 4,  this.height - 1);
+    ctxA.strokeRect(this.x + 2.5, this.y + (400 - this.height), this.width - 4, this.height - 1);
 
     //La surface d'adérance de la pédale.
     ctxA.fillStyle = this.gripColor;
-    for (let i = 0; i < 7; i ++){
+    for (let i = 0; i < 7; i++) {
         ctxA.beginPath();
         let x = 20;
         let step = 42;
-        ctxA.moveTo(x,   (400 - this.height) + 43 + step * i);
+        ctxA.moveTo(x, (400 - this.height) + 43 + step * i);
         ctxA.lineTo(x + 110, (400 - this.height) + 43 + step * i);
         ctxA.lineTo(x + 110, (400 - this.height) + 43 + step * i + 4);
         ctxA.lineTo(x, (400 - this.height) + 43 + step * i + 4);
@@ -120,7 +120,7 @@ Accelerator.prototype.drawPressed = function () {
 
     //La surface d'adérance de la pédale.
     ctxA.fillStyle = this.gripColor;
-    for (let i = 0; i < 7; i ++){
+    for (let i = 0; i < 7; i++) {
         ctxA.beginPath();
         let x = 20;
         let step = 42;
@@ -136,29 +136,32 @@ Accelerator.prototype.drawPressed = function () {
 OBJET SPEEDCOUNTER
 */
 
-function SpeedCounter (config) {
-	this.x = config.x || 0;
-	this.y = config.y || 0;
+function SpeedCounter(config) {
+    this.x = config.x || 0;
+    this.y = config.y || 0;
     this.radius = config.radius || 200;
-	this.backgroundColor = config.color || 'rgb(0, 0, 0)';
-	this.graduationColor = config.color || 'rgb(255, 255, 255)';
-    this.nbGraduation = config.nbGraduation || 20;
-    this.angleGraduation = config.angleGraduation || 180/this.nbGraduation;
+    this.backgroundColor = config.color || 'rgb(0, 0, 0)';
+    this.graduationColor = config.color || 'rgb(255, 255, 255)';
+    this.nbGraduation = config.nbGraduation || 9;
+    this.angleGraduation = config.angleGraduation || 180 / this.nbGraduation;
 };
 
-SpeedCounter.prototype.draw = function() {
+SpeedCounter.prototype.draw = function () {
     // Fond du cadran
     ctxS.fillStyle = this.backgroundColor;
     ctxS.beginPath();
-    ctxS.arc(this.x + widthS/2, this.y + heightS/2, this.radius, degToRad(180), degToRad(360));
+    ctxS.arc(this.x + widthS / 2, this.y + heightS / 2, this.radius, degToRad(180), degToRad(360));
     ctxS.fill();
-    
-    // Premier point de la graduation
-    for (let i=0 ; i<3 ; i++){
-        ctxS.fillStyle = 'rgb(255, 0, 0)';
-        ctxS.beginPath();
-        ctxS.arc(this.x + widthS/2 - this.radius + distanceInFromDiagonal("x", this.radius - 30, this.angleGraduation * (i + 1)), this.y + heightS/2 - distanceInFromDiagonal("y", this.radius - 30, this.angleGraduation * (i + 1)), 5, degToRad(0), degToRad(360));
-        ctxS.fill();
+
+    // Dessin de la graduation
+    for (let j = 0; j < 4; j++) {// Permet de faire traits
+        for (let i = 1; i < this.nbGraduation; i++) {// Place les traits à équidistance et selon un certain angle et rayon
+            ctxS.fillStyle = this.graduationColor;
+            ctxS.beginPath();
+            // this.x + width/2 permet d'être au centre du cercle, même chose pour y. j permet le décalage est donc les "traits".
+            ctxS.arc(this.x + widthS / 2 + distanceInFromCircle('x', this.radius - 30 + j * 2, this.angleGraduation * i), this.y + heightS / 2 + distanceInFromCircle('y', this.radius - 30 + j * 2, this.angleGraduation * i), 2, degToRad(0), degToRad(360));
+            ctxS.fill();
+        }
     }
 
 }
@@ -166,23 +169,19 @@ SpeedCounter.prototype.draw = function() {
 /*FONCTIONS GENERALES*/
 
 // convertit les degrés en radiant pour la fonction arc()
-function degToRad (degrees) {
+function degToRad(degrees) {
     return degrees * Math.PI / 180;
 }
 
-// calcule la distance en X en fonction de la diagonale
-function distanceInFromDiagonal(c, radius, degrees){
-    let alpha = degToRad(degrees);
-    let gamma = degToRad(180 - degrees/2);
-    if (c === "x"){
-        // A commenter + plus schéma ?
-        return Math.abs(2 * radius * Math.cos(gamma) * Math.sin(alpha/2));
-    }else{
-        return 4 * radius * Math.sin(alpha/2);
+// Calcul la distance en x ou y pour suivre le cercle.
+function distanceInFromCircle(c, radius, degrees) {
+    //Si l'axe demandé est x
+    if (c === "x") {
+        return radius * Math.cos(degToRad(180 + degrees));
+    } else {
+        return radius * Math.sin(degToRad(180 + degrees));
     }
 }
-
-// PS: Condencé les deux fonctions de distance
 
 /*APPEL DES FONCTIONS*/
 let accelerator = new Accelerator({});
@@ -193,11 +192,11 @@ accelerator.drawRelease();
 
 // gestion animation de la pédale d'accélérateur
 canvasAccelerator.addEventListener('mousedown', (e) => {
-        accelerator.drawPressed();
+    accelerator.drawPressed();
 });
 
 canvasAccelerator.addEventListener('mouseup', (e) => {
-        accelerator.drawRelease();
+    accelerator.drawRelease();
 });
 
 speedCoutner.draw();
