@@ -145,6 +145,7 @@ function SpeedCounter(config) {
     this.nbGraduation = config.nbGraduation || 9;
     this.angleGraduation = config.angleGraduation || 180 / this.nbGraduation;
     this.pointerColor = config.pointerColor || 'rgb(255, 0, 0)';
+    this.pointerRadius = config.pointerRadius || 20;
 };
 
 SpeedCounter.prototype.draw = function () {
@@ -171,18 +172,44 @@ SpeedCounter.prototype.draw = function () {
     // Le cercle de base
     ctxS.fillStyle = this.pointerColor;
     ctxS.beginPath();
-    ctxS.arc(this.x + widthS/2, this.y + heightS/2, 20, degToRad(0), degToRad(360));
+    ctxS.arc(this.x + widthS/2, this.y + heightS/2, this.pointerRadius, degToRad(0), degToRad(360));
     ctxS.fill();
     // La pointe
+    let distance = this.widthPointer(this.angleGraduation, this.pointerRadius, 3);
+    let Cx = this.x + widthS/2;
+    let Cy = this.y + heightS/2;
     ctxS.fillStyle = this.pointerColor;
     ctxS.beginPath();
-    ctxS.moveTo(0, 0);
+    // On se place à la fin du triangle
+    ctxS.moveTo(distance[distance.length - 1].x + Cx, distance[distance.length-1].y + Cy);
+    for (let i=0 ; i<distance.length ; i++){
+        console.log("x: "+distance[i].x);
+        console.log("y: "+distance[i].y);
+        ctxS.lineTo(distance[i].x + Cx, distance[i].y + Cy);
+    }
+    ctxS.fill();
     //L'axe de rotation de l'aiguille
     ctxS.fillStyle = 'rgb(255, 255, 255)';
     ctxS.beginPath();
     ctxS.arc(this.x + widthS/2, this.y + heightS/2, 6, degToRad(0), degToRad(360));
     ctxS.fill();
 
+}
+
+SpeedCounter.prototype.widthPointer = function(angle, radius, nbPoints){
+    let points = [];
+    angle = angle + 180;
+    for (let i=0; i<nbPoints ; i++){
+        points.push({x: 0, y: 0});
+    }
+    let angleWidth = 90;
+    // Le point le plus bas
+    points[0] = {x: radius * Math.cos(degToRad(angleWidth - angle)),y: radius * Math.sin(degToRad(angleWidth - angle))};
+    // Le point au millieu
+    points[1] = {x: (radius + 100 )* Math.cos(degToRad(angle)), y: (radius + 100) * Math.sin(degToRad(angle))};
+    // Le point le plus haut
+    points[2] = {x: radius * Math.cos(degToRad(angleWidth + angle)), y: radius * Math.sin(degToRad(angleWidth + angleWidth))};
+    return points;
 }
 
 /*FONCTIONS GENERALES*/
