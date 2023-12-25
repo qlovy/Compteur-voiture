@@ -166,6 +166,7 @@ SpeedCounter.prototype.draw = function () {
             ctxS.fill();
         }
     }
+    //PS: Utilisé pushMatrix, translate, rotate, popMatrix ==> faire bouger le système d'axe et non la pièce
 
     // Dessin de l'aiguille
     //La forme de l'aiguille
