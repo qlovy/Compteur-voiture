@@ -176,18 +176,12 @@ SpeedCounter.prototype.draw = function () {
     ctxS.arc(this.x + widthS/2, this.y + heightS/2, this.pointerRadius, degToRad(0), degToRad(360));
     ctxS.fill();
     // La pointe
-    let distance = this.widthPointer(this.angleGraduation, this.pointerRadius, 3);
-    let Cx = this.x + widthS/2;
-    let Cy = this.y + heightS/2;
-    ctxS.fillStyle = this.pointerColor;
     ctxS.beginPath();
-    // On se place à la fin du triangle
-    ctxS.moveTo(distance[distance.length - 1].x + Cx, distance[distance.length-1].y + Cy);
-    for (let i=0 ; i<distance.length ; i++){
-        console.log("x: "+distance[i].x);
-        console.log("y: "+distance[i].y);
-        ctxS.lineTo(distance[i].x + Cx, distance[i].y + Cy);
-    }
+    ctxS.moveTo(widthS/2, heightS/2);
+    ctxS.lineTo(widthS/2, heightS/2 + this.pointerRadius);
+    ctxS.lineTo(widthS/2 - this.radius + 50, heightS/2);
+    ctxS.lineTo(widthS/2, heightS/2 - this.pointerRadius);
+    ctxS.lineTo(widthS/2, heightS/2);
     ctxS.fill();
     //L'axe de rotation de l'aiguille
     ctxS.fillStyle = 'rgb(255, 255, 255)';
