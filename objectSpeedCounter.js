@@ -18,20 +18,20 @@ function SpeedCounter(config) {
 
 SpeedCounter.prototype.draw = function () {
     // Fond du cadran
-    ctxS.fillStyle = this.backgroundColor;
-    ctxS.fillRect(this.x+ widthS/2 - this.radius, this.y + heightS/2, this.radius*2, 30);
-    ctxS.beginPath();
-    ctxS.arc(this.x + widthS / 2, this.y + heightS / 2, this.radius, degToRad(180), degToRad(360));
-    ctxS.fill();
+    this.ctx.fillStyle = this.backgroundColor;
+    this.ctx.fillRect(this.x+ this.width/2 - this.radius, this.y + this.height/2, this.radius*2, 30);
+    this.ctx.beginPath();
+    this.ctx.arc(this.x + this.width / 2, this.y + this.height / 2, this.radius, degToRad(180), degToRad(360));
+    this.ctx.fill();
 
     // Dessin de la graduation, PS: faire de chaque côté du curseur
     for (let j = 0; j < 4; j++) {// Permet de faire traits
         for (let i = 1; i < this.nbGraduation; i++) {// Place les traits à équidistance et selon un certain angle et rayon
-            ctxS.fillStyle = this.graduationColor;
-            ctxS.beginPath();
+            this.ctx.fillStyle = this.graduationColor;
+            this.ctx.beginPath();
             // this.x + width/2 permet d'être au centre du cercle, même chose pour y. j permet le décalage est donc les "traits".
-            ctxS.arc(this.x + widthS / 2 + distanceInFromCircle('x', this.radius - 30 + j * 2, this.angleGraduation * i), this.y + heightS / 2 + distanceInFromCircle('y', this.radius - 30 + j * 2, this.angleGraduation * i), 2, degToRad(0), degToRad(360));
-            ctxS.fill();
+            this.ctx.arc(this.x + this.width / 2 + distanceInFromCircle('x', this.radius - 30 + j * 2, this.angleGraduation * i), this.y + this.height / 2 + distanceInFromCircle('y', this.radius - 30 + j * 2, this.angleGraduation * i), 2, degToRad(0), degToRad(360));
+            this.ctx.fill();
         }
     }
     //PS: Utilisé pushMatrix, translate, rotate, popMatrix ==> faire bouger le système d'axe et non la pièce
@@ -39,23 +39,23 @@ SpeedCounter.prototype.draw = function () {
     // Dessin de l'aiguille
     //La forme de l'aiguille
     // Le cercle de base
-    ctxS.fillStyle = this.pointerColor;
-    ctxS.beginPath();
-    ctxS.arc(this.x + widthS/2, this.y + heightS/2, this.pointerRadius, degToRad(0), degToRad(360));
-    ctxS.fill();
+    this.ctx.fillStyle = this.pointerColor;
+    this.ctx.beginPath();
+    this.ctx.arc(this.x + this.width/2, this.y + this.height/2, this.pointerRadius, degToRad(0), degToRad(360));
+    this.ctx.fill();
     // La pointe
-    ctxS.beginPath();
-    ctxS.moveTo(widthS/2, heightS/2);
-    ctxS.lineTo(widthS/2, heightS/2 + this.pointerRadius);
-    ctxS.lineTo(widthS/2 - this.radius + 50, heightS/2);
-    ctxS.lineTo(widthS/2, heightS/2 - this.pointerRadius);
-    ctxS.lineTo(widthS/2, heightS/2);
-    ctxS.fill();
+    this.ctx.beginPath();
+    this.ctx.moveTo(this.width/2, this.height/2);
+    this.ctx.lineTo(this.width/2, this.height/2 + this.pointerRadius);
+    this.ctx.lineTo(this.width/2 - this.radius + 50, this.height/2);
+    this.ctx.lineTo(this.width/2, this.height/2 - this.pointerRadius);
+    this.ctx.lineTo(this.width/2, this.height/2);
+    this.ctx.fill();
     //L'axe de rotation de l'aiguille
-    ctxS.fillStyle = 'rgb(255, 255, 255)';
-    ctxS.beginPath();
-    ctxS.arc(this.x + widthS/2, this.y + heightS/2, 6, degToRad(0), degToRad(360));
-    ctxS.fill();
+    this.ctx.fillStyle = 'rgb(255, 255, 255)';
+    this.ctx.beginPath();
+    this.ctx.arc(this.x + this.width/2, this.y + this.height/2, 6, degToRad(0), degToRad(360));
+    this.ctx.fill();
 
 }
 

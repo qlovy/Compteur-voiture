@@ -1,20 +1,3 @@
-/*DECLARATION VARIABLE*/
-
-
-
-
-
-
-/*OBJECT ACCELERATOR*/
-
-
-
-/*
-OBJET SPEEDCOUNTER
-*/
-
-
-
 /*FONCTIONS GENERALES*/
 
 // convertit les degrés en radiant pour la fonction arc()
