@@ -26,14 +26,11 @@ a {
     position: absolute;
     top: 200px;
     left: 400px;
-    width: 150px;
-    height: 400px;
-
 }
 
 /*Le compteur de vitesse*/
 #cadranVitesse {
     position: absolute;
     top: 200px;
-    left: 600px;
+    left: 800px;
 }
