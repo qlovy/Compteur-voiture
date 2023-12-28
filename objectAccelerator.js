@@ -60,7 +60,7 @@ Accelerator.prototype.drawRelease = function () {
     this.ctx.lineWidth = lineWidth;
     for (let i = 0; i < 7; i++) {
         this.ctx.beginPath();
-        this.ctx.moveTo(20,30 + pas * i);
+        this.ctx.moveTo(20, 30 + pas * i);
         this.ctx.lineTo(w - 20, 30 + pas * i);
         this.ctx.stroke();
     }
@@ -101,7 +101,7 @@ Accelerator.prototype.drawPressed = function () {
     this.ctx.lineWidth = lineWidth;
     for (let i = 0; i < 7; i++) {
         this.ctx.beginPath();
-        this.ctx.moveTo(20,30 + pas * i);
+        this.ctx.moveTo(20, 30 + pas * i);
         this.ctx.lineTo(w - 20, 30 + pas * i);
         this.ctx.stroke();
     }
