@@ -14,16 +14,29 @@ function SpeedCounter(config) {
     this.angleGraduation = config.angleGraduation || 180 / this.nbGraduation;
     this.pointerColor = config.pointerColor || 'rgb(255, 0, 0)';
     this.pointerRadius = config.pointerRadius || 20;
-};
+}
 
 SpeedCounter.prototype.draw = function () {
     // Fond du cadran
     this.ctx.fillStyle = this.backgroundColor;
-    this.ctx.fillRect(this.x+ this.width/2 - this.radius, this.y + this.height/2, this.radius*2, 30);
+    // le haut du cadran
     this.ctx.beginPath();
     this.ctx.arc(this.x + this.width / 2, this.y + this.height / 2, this.radius, degToRad(180), degToRad(360));
     this.ctx.fill();
+    // le bas du cadran
+    this.ctx.fillRect(this.x + this.width/2 - this.radius, this.y + this.height/2, this.radius*2, 30);
 
+    this.ctx.save();
+    this.ctx.fillStyle = this.pointerColor;
+    this.ctx.translate(120, 200);
+    for (let i=0; i<3; i++){    // regarder exemple Khan academy
+        this.ctx.rotate(Math.PI/180 * this.angleGraduation);
+        this.ctx.fillRect(0, 0, 15, 5);
+    }
+    this.ctx.restore();
+
+
+    /*
     // Dessin de la graduation, PS: faire de chaque côté du curseur
     for (let j = 0; j < 4; j++) {// Permet de faire traits
         for (let i = 1; i < this.nbGraduation; i++) {// Place les traits à équidistance et selon un certain angle et rayon
@@ -33,9 +46,8 @@ SpeedCounter.prototype.draw = function () {
             this.ctx.arc(this.x + this.width / 2 + distanceInFromCircle('x', this.radius - 30 + j * 2, this.angleGraduation * i), this.y + this.height / 2 + distanceInFromCircle('y', this.radius - 30 + j * 2, this.angleGraduation * i), 2, degToRad(0), degToRad(360));
             this.ctx.fill();
         }
-    }
-    //PS: Utilisé pushMatrix, translate, rotate, popMatrix ==> faire bouger le système d'axe et non la pièce
-
+    }*/
+    /*
     // Dessin de l'aiguille
     //La forme de l'aiguille
     // Le cercle de base
@@ -56,7 +68,7 @@ SpeedCounter.prototype.draw = function () {
     this.ctx.beginPath();
     this.ctx.arc(this.x + this.width/2, this.y + this.height/2, 6, degToRad(0), degToRad(360));
     this.ctx.fill();
-
+    */
 }
 
 SpeedCounter.prototype.widthPointer = function(angle, radius, nbPoints){
