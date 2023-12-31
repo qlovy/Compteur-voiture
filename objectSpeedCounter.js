@@ -26,14 +26,16 @@ SpeedCounter.prototype.draw = function () {
     // le bas du cadran
     this.ctx.fillRect(this.x + this.width/2 - this.radius, this.y + this.height/2, this.radius*2, 30);
 
-    this.ctx.save();
+    // la graduation
+    
     this.ctx.fillStyle = this.pointerColor;
-    this.ctx.translate(120, 200);
-    for (let i=0; i<3; i++){    // regarder exemple Khan academy
-        this.ctx.rotate(Math.PI/180 * this.angleGraduation);
+    for (let i=0; i<this.nbGraduation; i++){    // regarder exemple Khan academy
+        this.ctx.save();
+        this.ctx.translate(this.width/2, 100);
+        this.ctx.rotate(Math.PI/180 * this.angleGraduation * i);
         this.ctx.fillRect(0, 0, 15, 5);
+        this.ctx.restore();
     }
-    this.ctx.restore();
 
 
     /*
