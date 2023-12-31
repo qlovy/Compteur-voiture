@@ -1,17 +1,25 @@
-/*Le titre*/
-h1 {
-    position: absolute;
-    left: 800px;
-    font-family: 'Sometype Mono', monospace;
-    margin-top: 40px;
+/*Le texte et l'image*/
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center
 }
 
 /*L'image*/
 img {
-    width: 102px;
-    position: relative;
-    margin-left: 1150px;
+    width: 100px;
+}
 
+.image {
+    margin-top: 15px;
+    margin-left: 20px;
+}
+
+/*Le titre*/
+.text {
+    text-align: center;
+    font-family: 'Sometype Mono', monospace;
+    margin-top: 10px;
 }
 
 /*La source de l'image*/
