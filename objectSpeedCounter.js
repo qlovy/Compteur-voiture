@@ -27,28 +27,16 @@ SpeedCounter.prototype.draw = function () {
     this.ctx.fillRect(this.x + this.width/2 - this.radius, this.y + this.height/2, this.radius*2, 30);
 
     // la graduation
-    
     this.ctx.fillStyle = this.pointerColor;
-    for (let i=0; i<this.nbGraduation; i++){    // regarder exemple Khan academy
+    for (let i=0; i<10; i++){
         this.ctx.save();
-        this.ctx.translate(this.width/2, 100);
-        this.ctx.rotate(Math.PI/180 * this.angleGraduation * i);
+        // Math.cos et Math.sin permet de calculer la distance en x et respectivement y pour le suivit du cercle.
+        this.ctx.translate(this.width/2 + Math.cos(Math.PI/180 * this.angleGraduation * i + Math.PI) * (this.radius - 40), this.height/2 + Math.sin(Math.PI/180 * this.angleGraduation * i + Math.PI) * (this.radius - 40));
+        this.ctx.rotate(Math.PI/180 * this.angleGraduation * i + Math.PI);
         this.ctx.fillRect(0, 0, 15, 5);
         this.ctx.restore();
     }
 
-
-    /*
-    // Dessin de la graduation, PS: faire de chaque côté du curseur
-    for (let j = 0; j < 4; j++) {// Permet de faire traits
-        for (let i = 1; i < this.nbGraduation; i++) {// Place les traits à équidistance et selon un certain angle et rayon
-            this.ctx.fillStyle = this.graduationColor;
-            this.ctx.beginPath();
-            // this.x + width/2 permet d'être au centre du cercle, même chose pour y. j permet le décalage est donc les "traits".
-            this.ctx.arc(this.x + this.width / 2 + distanceInFromCircle('x', this.radius - 30 + j * 2, this.angleGraduation * i), this.y + this.height / 2 + distanceInFromCircle('y', this.radius - 30 + j * 2, this.angleGraduation * i), 2, degToRad(0), degToRad(360));
-            this.ctx.fill();
-        }
-    }*/
     /*
     // Dessin de l'aiguille
     //La forme de l'aiguille
