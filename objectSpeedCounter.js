@@ -27,38 +27,39 @@ SpeedCounter.prototype.draw = function () {
     this.ctx.fillRect(this.x + this.width/2 - this.radius, this.y + this.height/2, this.radius*2, 30);
 
     // la graduation
-    this.ctx.fillStyle = this.pointerColor;
+    this.ctx.fillStyle = this.graduationColor;
     for (let i=0; i<10; i++){
         this.ctx.save();
         // Math.cos et Math.sin permet de calculer la distance en x et respectivement y pour le suivit du cercle.
         this.ctx.translate(this.width/2 + Math.cos(Math.PI/180 * this.angleGraduation * i + Math.PI) * (this.radius - 40), this.height/2 + Math.sin(Math.PI/180 * this.angleGraduation * i + Math.PI) * (this.radius - 40));
         this.ctx.rotate(Math.PI/180 * this.angleGraduation * i + Math.PI);
-        this.ctx.fillRect(0, 0, 15, 5);
+        this.ctx.fillRect(0, -2, 15, 5);
         this.ctx.restore();
     }
 
-    /*
-    // Dessin de l'aiguille
-    //La forme de l'aiguille
-    // Le cercle de base
+    // l'aiguille 
+    // le cercle de base
     this.ctx.fillStyle = this.pointerColor;
     this.ctx.beginPath();
     this.ctx.arc(this.x + this.width/2, this.y + this.height/2, this.pointerRadius, degToRad(0), degToRad(360));
     this.ctx.fill();
-    // La pointe
+
+    // la pointe
+    this.ctx.save();
+    this.ctx.fillStyle = this.pointerColor;
+    this.ctx.translate(this.width/2, this.height/2 + this.pointerRadius);// Place le système d'axe au en bas du cercle de base
     this.ctx.beginPath();
-    this.ctx.moveTo(this.width/2, this.height/2);
-    this.ctx.lineTo(this.width/2, this.height/2 + this.pointerRadius);
-    this.ctx.lineTo(this.width/2 - this.radius + 50, this.height/2);
-    this.ctx.lineTo(this.width/2, this.height/2 - this.pointerRadius);
-    this.ctx.lineTo(this.width/2, this.height/2);
+    this.ctx.lineTo(-this.radius + 60, -this.pointerRadius);// La pointe
+    this.ctx.lineTo(0, -2 * this.pointerRadius);// Le point le plus haut du cercle de base
+    this.ctx.lineTo(0, 0);// On complète la forme
     this.ctx.fill();
-    //L'axe de rotation de l'aiguille
+    this.ctx.restore();
+
+    // l'axe de rotation
     this.ctx.fillStyle = 'rgb(255, 255, 255)';
     this.ctx.beginPath();
     this.ctx.arc(this.x + this.width/2, this.y + this.height/2, 6, degToRad(0), degToRad(360));
     this.ctx.fill();
-    */
 }
 
 SpeedCounter.prototype.widthPointer = function(angle, radius, nbPoints){
