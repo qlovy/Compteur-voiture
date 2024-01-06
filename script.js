@@ -19,9 +19,18 @@ function distanceInFromCircle(c, radius, degrees) {
 let accelerator = new Accelerator({});
 let speedCoutner = new SpeedCounter({});
 
-window.onload = function () { accelerator.drawRelease() };
+// Au chargement de la page, on dessine les éléments en position initiale
+window.onload = function () { 
+    accelerator.drawRelease();
+    speedCoutner.drawRelease();
+}
 
-accelerator.canvas.addEventListener('mousedown', () => { accelerator.drawPressed() });
-accelerator.canvas.addEventListener('mouseup', () => { accelerator.drawRelease() });
+accelerator.canvas.addEventListener('mousedown', () => { 
+    accelerator.drawPressed();
+    speedCoutner.drawAcceleration();
+})
 
-speedCoutner.draw();
+accelerator.canvas.addEventListener('mouseup', () => { 
+    accelerator.drawRelease();
+    speedCoutner.drawRelease();
+})

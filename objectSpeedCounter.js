@@ -14,9 +14,10 @@ function SpeedCounter(config) {
     this.angleGraduation = config.angleGraduation || 180 / this.nbGraduation;
     this.pointerColor = config.pointerColor || 'rgb(255, 0, 0)';
     this.pointerRadius = config.pointerRadius || 20;
+    this.i = config.i || 1;
 }
 
-SpeedCounter.prototype.draw = function () {
+SpeedCounter.prototype.drawBackground = function () {
     // Fond du cadran
     this.ctx.fillStyle = this.backgroundColor;
     // le haut du cadran
@@ -36,8 +37,11 @@ SpeedCounter.prototype.draw = function () {
         this.ctx.fillRect(0, -2, 15, 5);
         this.ctx.restore();
     }
+}
 
-    // l'aiguille 
+SpeedCounter.prototype.drawRelease = function(){
+    this.drawBackground();
+    // l'aiguille
     // le cercle de base
     this.ctx.fillStyle = this.pointerColor;
     this.ctx.beginPath();
@@ -62,18 +66,32 @@ SpeedCounter.prototype.draw = function () {
     this.ctx.fill();
 }
 
-SpeedCounter.prototype.widthPointer = function(angle, radius, nbPoints){
-    let points = [];
-    angle = angle + 180;
-    for (let i=0; i<nbPoints ; i++){
-        points.push({x: 0, y: 0});
-    }
-    let angleWidth = 90;
-    // Le point le plus bas
-    points[0] = {x: radius * Math.cos(degToRad(angleWidth - angle)),y: radius * Math.sin(degToRad(angleWidth - angle))};
-    // Le point au millieu
-    points[1] = {x: (radius + 100 )* Math.cos(degToRad(angle)), y: (radius + 100) * Math.sin(degToRad(angle))};
-    // Le point le plus haut
-    points[2] = {x: radius * Math.cos(degToRad(angleWidth + angle)), y: radius * Math.sin(degToRad(angleWidth + angleWidth))};
-    return points;
+SpeedCounter.prototype.drawAcceleration = function () {
+    this.drawBackground();
+    // l'aiguille
+    // le cercle de base
+    this.ctx.fillStyle = this.pointerColor;
+    this.ctx.beginPath();
+    this.ctx.arc(this.x + this.width/2, this.y + this.height/2, this.pointerRadius, degToRad(0), degToRad(360));
+    this.ctx.fill();
+
+    // la pointe
+    this.ctx.save();
+    this.ctx.fillStyle = this.pointerColor;
+    this.ctx.translate(this.width/2, this.height/2 + this.pointerRadius);// Place le système d'axe au en bas du cercle de base
+    this.ctx.rotate(3 * this.i);
+    this.ctx.beginPath();
+    this.ctx.lineTo(-this.radius + 60, -this.pointerRadius);// La pointe
+    this.ctx.lineTo(0, -2 * this.pointerRadius);// Le point le plus haut du cercle de base
+    this.ctx.lineTo(0, 0);// On complète la forme
+    this.ctx.fill();
+    this.ctx.restore();
+
+    // l'axe de rotation
+    this.ctx.fillStyle = 'rgb(255, 255, 255)';
+    this.ctx.beginPath();
+    this.ctx.arc(this.x + this.width/2, this.y + this.height/2, 6, degToRad(0), degToRad(360));
+    this.ctx.fill();
+
+    this.i++;
 }
