@@ -25,12 +25,17 @@ window.onload = function () {
     speedCoutner.drawRelease();
 }
 
-accelerator.canvas.addEventListener('mousedown', () => { 
-    accelerator.drawPressed();
-    speedCoutner.drawAcceleration();
-})
+function draw(){
+    // Quand on appuie sur la pédale d'accélérateur
+    accelerator.canvas.addEventListener('mousedown', () => {
+        accelerator.drawPressed();          // Dessin de la pédale appuyée
+        speedCoutner.drawAcceleration();    // Dessin de l'aiguille qui tourne
+    })
 
-accelerator.canvas.addEventListener('mouseup', () => { 
-    accelerator.drawRelease();
-    speedCoutner.drawRelease();
-})
+    accelerator.canvas.addEventListener('mouseup', () => {
+        accelerator.drawRelease();
+        speedCoutner.drawRelease();
+    })
+    window.requestAnimationFrame(draw);//exécute la fonction draw 60 fois par secondes.
+}
+draw();

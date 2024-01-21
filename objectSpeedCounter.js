@@ -64,6 +64,7 @@ SpeedCounter.prototype.drawRelease = function(){
     this.ctx.beginPath();
     this.ctx.arc(this.x + this.width/2, this.y + this.height/2, 6, degToRad(0), degToRad(360));
     this.ctx.fill();
+    this.i = 0;
 }
 
 SpeedCounter.prototype.drawAcceleration = function () {
@@ -76,10 +77,11 @@ SpeedCounter.prototype.drawAcceleration = function () {
     this.ctx.fill();
 
     // la pointe
+    let angle = this.i;
     this.ctx.save();
     this.ctx.fillStyle = this.pointerColor;
-    this.ctx.translate(this.width/2, this.height/2 + this.pointerRadius);// Place le système d'axe au en bas du cercle de base
-    this.ctx.rotate(3 * this.i);
+    this.ctx.translate(this.width/2 - this.pointerRadius * Math.sin(Math.PI/180 * angle), this.height/2 + this.pointerRadius - 1);// Place le système d'axe au en bas du cercle de base
+    this.ctx.rotate(Math.PI/180 * angle);
     this.ctx.beginPath();
     this.ctx.lineTo(-this.radius + 60, -this.pointerRadius);// La pointe
     this.ctx.lineTo(0, -2 * this.pointerRadius);// Le point le plus haut du cercle de base
@@ -92,6 +94,5 @@ SpeedCounter.prototype.drawAcceleration = function () {
     this.ctx.beginPath();
     this.ctx.arc(this.x + this.width/2, this.y + this.height/2, 6, degToRad(0), degToRad(360));
     this.ctx.fill();
-
     this.i++;
 }
