@@ -54,8 +54,15 @@ SpeedCounter.prototype.drawRelease = function () {
     // la pointe
     this.ctx.save();
     this.ctx.fillStyle = this.pointerColor;
-    this.ctx.translate(this.width / 2, this.height / 2);
-    this.ctx.fillRect(0, 0, -100, 2);
+    this.ctx.translate(this.width / 2, this.height / 2);// Place le système d'axe au centre du cercle de base
+    this.ctx.rotate(degToRad(180));
+    this.ctx.beginPath();
+    this.ctx.lineTo(0, -this.pointerRadius);
+    this.ctx.lineTo(100, 0);
+    this.ctx.lineTo(0, this.pointerRadius);
+    this.ctx.lineTo(0, 0);
+    this.ctx.fill();
+    //this.ctx.fillRect(0, -5, -100, 10);
     this.ctx.restore();
 
     /*
@@ -88,17 +95,17 @@ SpeedCounter.prototype.drawAcceleration = function () {
 
     // la pointe
     let angle = degToRad(this.i + 180);
-    let dx = Math.cos(angle) * 100;
-    let dy = Math.sin(angle) * 100;
     this.ctx.save();
     this.ctx.fillStyle = this.pointerColor;
     this.ctx.translate(this.width / 2, this.height / 2);// Place le système d'axe au centre du cercle de base
+    this.ctx.rotate(angle);// On tourne le système d'axe
     this.ctx.beginPath();
-    this.ctx.lineTo(dx, dy);
-    this.ctx.lineTo(dx + 1, dy + 1);
-    this.ctx.lineTo(1, 1);
+    this.ctx.lineTo(0, -this.pointerRadius);
+    this.ctx.lineTo(100, 0);
+    this.ctx.lineTo(0, this.pointerRadius);
     this.ctx.lineTo(0, 0);
     this.ctx.fill();
+    //this.ctx.fillRect(0, -5, 100, 10);
     this.ctx.restore();
 
     // l'axe de rotation
