@@ -113,5 +113,5 @@ SpeedCounter.prototype.drawAcceleration = function () {
     this.ctx.beginPath();
     this.ctx.arc(this.x + this.width / 2, this.y + this.height / 2, 6, degToRad(0), degToRad(360));
     this.ctx.fill();
-    this.i = this.i + 0.1;
+    this.i++;
 }
