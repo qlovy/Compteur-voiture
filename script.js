@@ -16,11 +16,11 @@ window.onload = function () {
 }
 
 // contient le numéro de processus
-let id;
+let id = null;
 
 // Quand on appuie sur la pédale d'accélérateur
 accelerator.canvas.addEventListener('mousedown', () => {
-    if (id === undefined) {
+    if (id === null) {
         // Défini une boucle sous form d'intervalle régulière de 100 ms
         id = setInterval(
             () => {
@@ -35,6 +35,7 @@ accelerator.canvas.addEventListener('mousedown', () => {
 accelerator.canvas.addEventListener('mouseup', () => {
     // Arrête la boucle
     clearInterval(id);
+    id = null;
     accelerator.drawRelease();
     speedCoutner.drawRelease();
 })
