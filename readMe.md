@@ -6,3 +6,4 @@ On simule bien sûr un compteur de vitesse analogique.
 ### Idée / Amélioration
 - Faire une descente de l'aiguille progressive
 - Faire une saturation de l'aiguille ou une butée quand on est au max
+- Faire que l'accélération suive une courbe spécifique à choix.
